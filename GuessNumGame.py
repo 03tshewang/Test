@@ -1,7 +1,5 @@
 import random
-
 secret_number = random.randint(1,10)
-
 max_attempts = 3
 
 def welcome_message():
@@ -18,8 +16,16 @@ def guess_recursive(attempts_left):
         if attempts_left > 1:
             guess_recursive(attempts_left-1)
         else:
-            print(f"Sorry, you could not guess the number. The correct number was{secret_number}.")
+            print(f"Sorry, you could not guess the number. The correct number was {secret_number}.")
 welcome_message()
 guess_recursive(max_attempts)
 
-print(f"Memory address of Secret Number{secret_number}is: {id(secret_number)}")
+print(f"Memory address of Secret Number {secret_number} is: {id(secret_number)}")
+
+while True:
+    try_again = input("Do you want to try again? ").lower()
+    if try_again == "yes":
+        guess_recursive(max_attempts)
+    else:
+        print("Game over")
+        break
